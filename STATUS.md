@@ -51,9 +51,9 @@
 - **Butuh user/parent** — semua langkah ini hanya bisa dari browser + HP user.
 
 ### C. Repo GitHub publik + deploy
-- Saya tidak punya token GitHub → **repo lokal saja, belum di-push**.
-- **Butuh parent:** buat repo publik (mis. `Hendrik123906/komisiku`),
-  push isi folder ini, aktifkan GitHub Pages untuk URL app yang jalan.
+- ✅ DONE 12 Nov 2026 ~14:34 WIB: repo publik https://github.com/Hendrik123906/komisiku
+  (commit aeea800, `.kiro/` 6 file terlacak) + GitHub Pages hidup
+  https://hendrik123906.github.io/komisiku/ (terverifikasi termuat, dashboard + form + payout).
 
 ### D. Video demo < 3 menit
 - **JANGAN generate video AI — BLOCKED permanen di akun ini.**
