@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KomisiKu 🎃 — Shopee Affiliate Tracker</title>
+<meta name="description" content="Lacak link affiliate Shopee, klik, order, dan estimasi komisi. Gratis, data tersimpan di HP kamu sendiri.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">🎃 <strong>KomisiKu</strong> <span class="tag">Shopee Affiliate Tracker</span></div>
+  <div class="payout-chip" id="payoutChip">—</div>
+</header>
+
+<main>
+  <section class="stats" id="stats">
+    <div class="stat"><span class="stat-label">Total Klik</span><strong id="statClicks">0</strong></div>
+    <div class="stat"><span class="stat-label">Total Order</span><strong id="statOrders">0</strong></div>
+    <div class="stat"><span class="stat-label">Konversi</span><strong id="statConv">0%</strong></div>
+    <div class="stat highlight"><span class="stat-label">Estimasi Komisi</span><strong id="statCommission">Rp0</strong></div>
+  </section>
+
+  <section class="card">
+    <h2>👻 Tambah Link Affiliate</h2>
+    <form id="linkForm">
+      <div class="grid">
+        <label>Nama produk
+          <input type="text" id="fName" required maxlength="80" placeholder="cth: Maybelline Fit Me">
+        </label>
+        <label>Link Shopee (short link)
+          <input type="url" id="fUrl" required placeholder="https://s.shopee.co.id/xxxxx">
+        </label>
+        <label>Harga produk (Rp)
+          <input type="number" id="fPrice" required min="0" step="100" placeholder="63800">
+        </label>
+        <label>Komisi (%)
+          <input type="number" id="fRate" required min="0" max="40" step="0.5" value="5" placeholder="5">
+        </label>
+        <label>Kategori
+          <select id="fCat">
+            <option>Kecantikan</option><option>Fashion</option><option>Elektronik</option>
+            <option>Rumah Tangga</option><option>Kesehatan</option><option>Lainnya</option>
+          </select>
+        </label>
+      </div>
+      <button type="submit" class="btn-primary">＋ Simpan Link</button>
+      <p class="hint">Komisi Shopee Affiliate umumnya 2,5–12% + XTRA sampai 40%. Cek rate tiap produk di aplikasi Shopee.</p>
+    </form>
+  </section>
+
+  <section class="card">
+    <div class="row-between">
+      <h2>🔗 Link Saya</h2>
+      <div class="actions">
+        <input type="search" id="search" placeholder="Cari produk…" aria-label="Cari produk">
+        <button id="exportBtn" class="btn-ghost">⬇ Export CSV</button>
+        <button id="resetBtn" class="btn-danger">🗑 Hapus Semua</button>
+      </div>
+    </div>
+    <div id="linkList" class="link-list"></div>
+    <p id="emptyState" class="empty">Belum ada link. Tambah link pertamamu di atas 👆</p>
+  </section>
+
+  <section class="card payout">
+    <h2>💰 Status Payout</h2>
+    <p id="payoutText">—</p>
+    <ul class="rules">
+      <li>Minimum payout: <strong>Rp10.000</strong></li>
+      <li>Komisi &lt; Rp500.000 → dibayar ke <strong>ShopeePay</strong></li>
+      <li>Komisi ≥ Rp500.000 → dibayar ke <strong>rekening bank</strong></li>
+      <li>Komisi hanya dihitung jika klik → beli dalam <strong>24 jam</strong>.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <p>KomisiKu — dibuat untuk Kiroween 2026 🎃 · Data tersimpan lokal di browser HP kamu (localStorage), tidak dikirim ke server mana pun.</p>
+</footer>
+
+<dialog id="logDialog">
+  <form method="dialog">
+    <h3 id="logTitle">Catat Aktivitas</h3>
+    <p id="logProduct"></p>
+    <div class="grid">
+      <label>Tambah klik <input type="number" id="logClicks" min="0" value="0"></label>
+      <label>Tambah order <input type="number" id="logOrders" min="0" value="0"></label>
+    </div>
+    <div class="dialog-actions">
+      <button class="btn-primary" id="logSave" value="save">Simpan</button>
+      <button class="btn-ghost" value="cancel">Batal</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>

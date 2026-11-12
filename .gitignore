@@ -1,0 +1,5 @@
+# KomisiKu .gitignore
+# WARNING: never ignore .kiro/ — the submission REQUIRES /.kiro at repo root.
+node_modules/
+.DS_Store
+*.log
