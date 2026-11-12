@@ -26,7 +26,11 @@ function render() {
 
   const clicks = all.reduce((s, l) => s + l.clicks, 0);
   const orders = all.reduce((s, l) => s + l.orders, 0);
-  const total = all.reduce((s, l) => s + commissionOf(l), 0);
+  // Round to whole rupiah once: Shopee pays in whole Rp, and the dashboard
+  // already rounds for display (rp()). Using the same rounded value for the
+  // payout threshold keeps the chip consistent with the number the user sees
+  // (e.g. 499999.5 displays as Rp500.000 and now correctly routes to Bank).
+  const total = Math.round(all.reduce((s, l) => s + commissionOf(l), 0));
 
   $('statClicks').textContent = clicks.toLocaleString('id-ID');
   $('statOrders').textContent = orders.toLocaleString('id-ID');

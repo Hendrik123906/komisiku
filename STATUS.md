@@ -60,16 +60,23 @@
 - Shot list + naskah siap di VIDEO_SHOTLIST.md (~2:30, screen-record saat app jalan).
 - **Butuh user/parent:** rekam layar + narasi, upload YouTube Public.
 
-## ⚠️ KEJUJURAN — penting sebelum submit
-- App ini dibangun mengikuti workflow spec-driven Kiro (spec + steering di
-  `.kiro/`), TAPI **belum ada satu langkah kerja pun yang dijalankan di dalam
-  Kiro** (IDE/CLI/Web) karena akun Kiro belum ada.
-- Sebelum submit Devpost, **wajib** ada minimal satu langkah nyata di Kiro:
-  buka repo ini di Kiro (Web/IDE) dan minta Kiro mengerjakan satu tugas dari
-  spec (mis. review atau tambah fitur), lalu tulis dengan jujur di README
-  bagian "How Kiro was used" apa yang Kiro lakukan.
-- **Jangan** centang/mengklaim pemakaian Kiro yang tidak terjadi — itu
-  pernyataan palsu dan bisa mendiskualifikasi submission.
+## ✅ KEJUJURAN — langkah Kiro nyata SUDAH terjadi (update 12 Nov 2026 ~16:44 WIB)
+- Kiro CLI 3.2.1, login BERHASIL 12 Nov 16:37 WIB (device flow, kode dikonfirmasi
+  user; `whoami`: Builder ID, bambanghendri71@gmail.com).
+- Langkah spec-driven nyata di Kiro 12 Nov ~16:44 WIB (sesi `kiro-cli chat`,
+  atas instruksi langsung user "jalanin"): Kiro membaca spec
+  shopee-affiliate-tracker + steering, me-review `app.js`/`index.html`, dan
+  menemukan edge case nyata — total komisi mentah Rp499.999,5 ditampilkan
+  "Rp500.000" tapi chip payout bilang masih ShopeePay. Perbaikan: total
+  komisi dibulatkan sekali ke rupiah penuh (`Math.round`) dan dipakai untuk
+  tampilan DAN threshold payout. Terverifikasi: `node --check app.js` lolos,
+  smoke test (499999.5 → Rp500.000/Bank; batas Rp10.000 juga konsisten),
+  git diff hanya `app.js` + `tasks.md` (task 4.2 ditandai selesai oleh Kiro).
+- Ini yang ditulis di README bagian "How Kiro was used" saat submit.
+- Kiro User ID BELUM didapat (`kiro-cli profile` butuh Pro) — ambil dari
+  dashboard usage Kiro; dibutuhkan untuk form kredit 4.000.
+- **Jangan** mengklaim pemakaian Kiro di luar yang di atas — itu pernyataan
+  palsu dan bisa mendiskualifikasi submission.
 
 ## 📅 Timeline sisa
 - Sekarang → 1 Des: buat akun Kiro + Devpost + minta kredit (butuh user)

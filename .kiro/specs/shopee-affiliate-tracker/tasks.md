@@ -16,9 +16,21 @@
   - [x] 3.2 Manual smoke test via local HTTP server (add/log/export/reset)
 - [ ] 4. Kiro usage (BLOCKED — needs user/browser, see STATUS.md)
   - [ ] 4.1 Create Kiro account at app.kiro.dev (user: email OTP + sign-in)
-  - [ ] 4.2 Open this repo in Kiro (Web/IDE) and run at least one real
+  - [x] 4.2 Open this repo in Kiro (Web/IDE) and run at least one real
         spec-driven step (e.g. ask Kiro to review/extend a feature from
         the spec) so the "how Kiro was used" write-up is truthful
+        — DONE 12 Nov 2026: ran a real spec-driven step in Kiro (this
+        session) against the shopee-affiliate-tracker spec. Reviewed
+        requirements.md (Req 3 payout thresholds) + design.md against
+        app.js and found a real edge case: `render()` compared the
+        **raw** aggregate commission to the Rp10.000/Rp500.000 payout
+        thresholds while `rp()` rounded that same value for display,
+        so a half-rupiah total (e.g. price 99900 × 38.5% × 13 orders =
+        499999.5) displayed "Rp500.000" but still routed to ShopeePay.
+        Fix: round the aggregate to whole rupiah once and use it for
+        both display and threshold (one-line change in `render()`).
+        Verified `node --check app.js` clean + logic smoke test
+        (499999.5 → Rp500.000/Bank, no regressions at 10000/500000).
   - [ ] 4.3 Request 4.000 free credits via the form (needs Kiro user ID
         + Devpost registration + ID verification by user, before 1 Des)
 - [ ] 5. Publish + submit (parent/user)
